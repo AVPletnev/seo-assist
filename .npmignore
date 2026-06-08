@@ -1,0 +1,10 @@
+# Исходники и dev-артефакты не попадают в npm (дублирует поле "files")
+src/
+examples/
+scripts/
+node_modules/
+*.bak
+.DS_Store
+seo.config.json
+seo-meta.json
+tsconfig.json

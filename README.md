@@ -1,69 +1,72 @@
 # seo-assist
 
-CLI-инструмент для автоматической настройки SEO в веб-проектах: генерация метатегов через AI, `robots.txt` с блокировкой AI-ботов и `sitemap.xml`.
+[![npm version](https://img.shields.io/npm/v/seo-assist.svg)](https://www.npmjs.com/package/seo-assist)
+[![license](https://img.shields.io/npm/l/seo-assist.svg)](https://github.com/AVPletnev/seo-assist/blob/main/LICENSE)
 
-## Установка
+CLI tool for automatic SEO setup in web projects: AI-powered meta tag generation, `robots.txt` with AI bot blocking, and `sitemap.xml`.
+
+## Installation
 
 ```bash
 npx seo-assist init
 ```
 
-Или глобально:
+Or install globally:
 
 ```bash
 npm install -g seo-assist
 ```
 
-## Быстрый старт
+## Quick start
 
 ```bash
-# 1. Инициализация конфигурации
+# 1. Initialize configuration
 npx seo-assist init
 
-# 2. Генерация SEO-файлов
+# 2. Generate SEO files
 npx seo-assist generate
 
-# 3. Проверка результата
+# 3. Validate the result
 npx seo-assist validate
 ```
 
-## Команды
+## Commands
 
 ### `init`
 
-Создаёт `seo.config.json` в корне проекта. Интерактивно запрашивает:
+Creates `seo.config.json` in the project root. Interactively asks for:
 
-- Тип сайта (интернет-магазин, блог, портфолио, лендинг)
-- Основной домен
-- Язык
-- Блокировку AI-краулеров (по умолчанию: да)
+- Site type (e-commerce, blog, portfolio, landing page)
+- Primary domain
+- Language
+- Whether to block AI crawlers (default: yes)
 
 ### `generate`
 
-Основная команда. Выполняет:
+The main command. It:
 
-1. **robots.txt** — в `public/` (или `static/`), с блокировкой AI-ботов при `blockAiBots: true`
-2. **sitemap.xml** — сканирует роуты из конфига и файловой системы
-3. **AI-метатеги** — через [OpenRouter API](https://openrouter.ai) сохраняет в `seo-meta.json`
-4. **Интеграция в код** — Next.js (Metadata API), React (`SEO.tsx`), Vite (`index.html`)
+1. **robots.txt** — writes to `public/` (or `static/`), blocks AI bots when `blockAiBots: true`
+2. **sitemap.xml** — scans routes from config and the file system
+3. **AI meta tags** — via the [OpenRouter API](https://openrouter.ai), saved to `seo-meta.json`
+4. **Code integration** — Next.js (Metadata API), React (`SEO.tsx`), Vite (`index.html`)
 
-Перед изменением файлов создаётся бэкап (`.bak`).
+Creates a `.bak` backup before modifying any files.
 
 ### `validate`
 
-Проверяет наличие `robots.txt`, `sitemap.xml`, метатегов и выводит отчёт.
+Checks for `robots.txt`, `sitemap.xml`, meta tags, and prints a report.
 
-## OpenRouter API ключ
+## OpenRouter API key
 
-Для AI-генерации метатегов нужен API ключ:
+AI meta tag generation requires an API key:
 
-1. Зарегистрируйтесь на [openrouter.ai](https://openrouter.ai)
-2. Получите ключ на [openrouter.ai/keys](https://openrouter.ai/keys) (бесплатно до $5)
-3. При первом запуске `generate` ключ будет запрошен и сохранён в `seo.config.json`
+1. Sign up at [openrouter.ai](https://openrouter.ai)
+2. Get a key at [openrouter.ai/keys](https://openrouter.ai/keys) (free up to $5)
+3. On the first `generate` run, the key is prompted and saved to `seo.config.json`
 
-Без ключа или без интернета работают только `robots.txt` и `sitemap.xml`.
+Without a key or without internet, only `robots.txt` and `sitemap.xml` are generated.
 
-## Пример конфигурации
+## Configuration example
 
 ```json
 {
@@ -77,33 +80,49 @@ npx seo-assist validate
 }
 ```
 
-## Поддерживаемые фреймворки
+## Supported frameworks
 
-| Фреймворк | Определение | Интеграция |
-|-----------|-------------|------------|
+| Framework | Detection | Integration |
+|-----------|-----------|-------------|
 | Next.js   | `next.config.*` | `app/layout.tsx` — Metadata API |
 | Vite      | `vite.config.*` | `index.html` |
 | React     | `src/index.html` | `src/components/SEO.tsx` |
 
-## Разработка
+## Development
 
 ```bash
-git clone <repo>
+git clone https://github.com/AVPletnev/seo-assist.git
 cd seo-assist
 npm install
 npm run build
 
-# Быстрый демо-тест на примере Next.js-блога (без API-ключа)
+# Quick demo test with a Next.js blog example (no API key needed)
 npm run test:demo
 
-# Или вручную
+# Or run manually
 node bin/index.js init
 node bin/index.js generate
 node bin/index.js validate
 ```
 
-Демо-проект: `examples/next-blog/` — минимальный Next.js App Router с готовым `seo.config.json`.
+Demo project: `examples/next-blog/` — a minimal Next.js App Router setup with a ready-made `seo.config.json`.
 
-## Лицензия
+## Publishing to npm (maintainers)
 
-MIT
+```bash
+# 1. Check package contents
+npm run publish:dry-run
+
+# 2. Log in (if not already)
+npm login
+
+# 3. Publish (prepublishOnly: build + test:demo)
+npm publish
+
+# Verify after publishing
+npx seo-assist@latest --version
+```
+
+## License
+
+MIT — see [LICENSE](LICENSE)

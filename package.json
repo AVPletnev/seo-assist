@@ -3,19 +3,30 @@
   "version": "0.1.0",
   "description": "CLI tool for automatic SEO setup in web projects with AI-powered meta tags, robots.txt and sitemap generation",
   "main": "dist/cli/index.js",
+  "types": "dist/cli/index.d.ts",
   "bin": {
     "seo-assist": "./bin/index.js"
   },
   "files": [
     "bin",
-    "dist"
+    "dist",
+    "LICENSE"
   ],
   "scripts": {
     "build": "tsc",
     "dev": "tsc --watch",
     "test:demo": "bash scripts/test-demo.sh",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build && npm run test:demo",
+    "publish:dry-run": "npm run build && npm pack --dry-run"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AVPletnev/seo-assist.git"
+  },
+  "bugs": {
+    "url": "https://github.com/AVPletnev/seo-assist/issues"
+  },
+  "homepage": "https://github.com/AVPletnev/seo-assist#readme",
   "keywords": [
     "seo",
     "cli",
@@ -27,7 +38,7 @@
     "react",
     "vite"
   ],
-  "author": "",
+  "author": "AVPletnev",
   "license": "MIT",
   "engines": {
     "node": ">=18"
