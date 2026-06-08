@@ -1,0 +1,7 @@
+node_modules/
+dist/
+*.bak
+.DS_Store
+seo.config.json
+!examples/**/seo.config.json
+seo-meta.json

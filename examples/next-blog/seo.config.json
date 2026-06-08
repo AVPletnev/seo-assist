@@ -1,0 +1,9 @@
+{
+  "siteType": "blog",
+  "domain": "https://example.com",
+  "language": "ru",
+  "blockAiBots": true,
+  "routes": ["/", "/about", "/contact", "/blog/*"],
+  "aiProvider": "openrouter",
+  "aiModel": "gpt-3.5-turbo"
+}

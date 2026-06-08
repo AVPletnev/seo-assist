@@ -1,0 +1,52 @@
+{
+  "name": "seo-assist",
+  "version": "0.1.0",
+  "description": "CLI tool for automatic SEO setup in web projects with AI-powered meta tags, robots.txt and sitemap generation",
+  "main": "dist/cli/index.js",
+  "bin": {
+    "seo-assist": "./bin/index.js"
+  },
+  "files": [
+    "bin",
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "test:demo": "bash scripts/test-demo.sh",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "seo",
+    "cli",
+    "robots",
+    "sitemap",
+    "meta-tags",
+    "ai",
+    "nextjs",
+    "react",
+    "vite"
+  ],
+  "author": "",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "@babel/parser": "^7.26.3",
+    "axios": "^1.7.9",
+    "chalk": "^4.1.2",
+    "cheerio": "^1.0.0",
+    "commander": "^12.1.0",
+    "fast-glob": "^3.3.2",
+    "fs-extra": "^11.2.0",
+    "inquirer": "^8.2.6",
+    "ora": "^5.4.1"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^11.0.4",
+    "@types/inquirer": "^8.2.10",
+    "@types/node": "^22.10.2",
+    "typescript": "^5.7.2"
+  }
+}
